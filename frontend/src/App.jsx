@@ -5,6 +5,7 @@ import Modal from "./components/Modal"; // Import the Modal component
 import { FaArrowRight } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
 import Experience from "./components/pages/experience";
+import AnimatedCursor from "react-animated-cursor";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,6 +22,27 @@ const App = () => {
 
   return (
     <div className="relative bg-transparent min-h-screen">
+      <AnimatedCursor
+        innerSize={12}
+        outerSize={24}
+        color="255, 255, 0" // RGB for yellow
+        outerAlpha={0.4}
+        innerScale={1}
+        outerScale={1.5}
+        clickables={[
+          "a",
+          "button",
+          "input[type='text']",
+          "input[type='email']",
+          "input[type='number']",
+          "input[type='submit']",
+          "input[type='image']",
+          "label[for]",
+          "select",
+          "textarea",
+          ".link",
+        ]}
+      />
       <ParticlesBackground />
       <div className="relative z-10 min-h-screen">
         <Header />

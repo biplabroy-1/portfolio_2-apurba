@@ -1,47 +1,37 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { FaCaretRight } from 'react-icons/fa';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Experience = () => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { amount: 0.5 }); // Trigger animation when 50% of the section is in view
-
-  const leftAnimation = {
+  const leftSectionAnimation = {
     initial: { x: '-100%', opacity: 0 },
     animate: { x: 0, opacity: 1 },
-    exit: { x: '-100%', opacity: 0 },
-    transition: { duration: 2 }, // Slowed down animation duration
+    exit: { x: '-100%', opacity: 0},
+    transition: { duration: 1.5 },
   };
 
-  const rightAnimation = {
+  const rightSectionAnimation = {
     initial: { x: '100%', opacity: 0 },
     animate: { x: 0, opacity: 1 },
     exit: { x: '100%', opacity: 0 },
-    transition: { duration: 2 }, // Slowed down animation duration
+    transition: { duration: 1.5 },
   };
 
   return (
-    <div
-      id="experience"
-      ref={sectionRef}
-      className="min-h-screen bg-opacity-10 backdrop-blur-sm text-white p-10"
-    >
+    <div id="experience" className="min-h-screen bg-opacity-10 backdrop-blur-sm text-white p-10">
       <h1 className="text-4xl font-bold mb-8 text-center text-yellow-500">Experience</h1>
       <div className="space-y-5">
         {/* First Experience */}
         <motion.div
           className="shadow-lg grid grid-cols-1 md:grid-cols-10 hover:shadow-yellowGlow hover:bg-black hover:scale-105 transition-all duration-300 max-w-[95%] mx-auto"
           initial="initial"
-          animate={isInView ? 'animate' : 'initial'}
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.5 }}
           exit="exit"
-          variants={rightAnimation}
         >
           <motion.div
             className="md:col-span-2 flex flex-col justify-center bg-yellow-500 text-black p-4"
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            exit="exit"
-            variants={leftAnimation}
+            variants={leftSectionAnimation}
           >
             <h2 className="text-2xl font-semibold text-center">Frontend Developer</h2>
             <p className="text-md text-center">Aug 2024 - Present</p>
@@ -49,10 +39,7 @@ const Experience = () => {
           </motion.div>
           <motion.div
             className="md:col-span-8 p-4 border border-yellow-500 flex flex-col justify-center"
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            exit="exit"
-            variants={rightAnimation}
+            variants={rightSectionAnimation}
           >
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start gap-2">
@@ -91,16 +78,13 @@ const Experience = () => {
         <motion.div
           className="shadow-lg grid grid-cols-1 md:grid-cols-10 hover:shadow-yellowGlow hover:bg-black hover:scale-105 transition-all duration-300 max-w-[95%] mx-auto"
           initial="initial"
-          animate={isInView ? 'animate' : 'initial'}
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.5 }}
           exit="exit"
-          variants={leftAnimation}
         >
           <motion.div
             className="md:col-span-8 p-4 border border-yellow-500 flex flex-col justify-center"
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            exit="exit"
-            variants={rightAnimation}
+            variants={leftSectionAnimation}
           >
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start gap-2">
@@ -119,10 +103,7 @@ const Experience = () => {
           </motion.div>
           <motion.div
             className="md:col-span-2 flex flex-col justify-center bg-yellow-500 text-black p-4"
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            exit="exit"
-            variants={leftAnimation}
+            variants={rightSectionAnimation}
           >
             <h2 className="text-2xl font-semibold text-center">Intern</h2>
             <p className="text-md text-center">Aug 2024 - Nov 2024</p>
@@ -134,16 +115,13 @@ const Experience = () => {
         <motion.div
           className="shadow-lg grid grid-cols-1 md:grid-cols-10 hover:shadow-yellowGlow hover:bg-black hover:scale-105 transition-all duration-300 max-w-[95%] mx-auto"
           initial="initial"
-          animate={isInView ? 'animate' : 'initial'}
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.5 }}
           exit="exit"
-          variants={rightAnimation}
         >
           <motion.div
             className="md:col-span-2 flex flex-col justify-center bg-yellow-500 text-black p-4"
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            exit="exit"
-            variants={leftAnimation}
+            variants={leftSectionAnimation}
           >
             <h2 className="text-2xl font-semibold text-center">Software Developer</h2>
             <p className="text-md text-center">Sep 2023 - Aug 2024</p>
@@ -151,10 +129,7 @@ const Experience = () => {
           </motion.div>
           <motion.div
             className="md:col-span-8 p-4 border border-yellow-500 flex flex-col justify-center"
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            exit="exit"
-            variants={rightAnimation}
+            variants={rightSectionAnimation}
           >
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start gap-2">
