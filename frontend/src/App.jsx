@@ -1,11 +1,13 @@
 import React, { useState, useRef } from "react";
 import Header from "./components/Header";
 import ParticlesBackground from "./components/ParticlesBackground";
-import Modal from "./components/Modal"; // Import the Modal component
+import Modal from "./components/Modal";
 import { FaArrowRight } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
 import Experience from "./components/pages/experience";
 import AnimatedCursor from "react-animated-cursor";
+import Projects from "./components/pages/Projects";
+import Contact from "./components/pages/Contact";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,6 +21,14 @@ const App = () => {
   };
 
   const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleScrollToExperience = (e) => {
+    e.preventDefault();
+    const experienceSection = document.getElementById("experience");
+    if (experienceSection) {
+      experienceSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="relative bg-transparent min-h-screen">
@@ -55,13 +65,23 @@ const App = () => {
                 <span className="text-white">Apurba</span>{" "}
                 <span className="text-yellow-500">Pal</span>
               </h1>
-              <button
-                ref={buttonRef}
-                onClick={handleOpenModal}
-                className="mt-6 px-6 py-3 text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
-              >
-                About Me <FaArrowRight />
-              </button>
+              <div className="flex gap-4 mt-6">
+                <button
+                  ref={buttonRef}
+                  onClick={handleOpenModal}
+                  className="px-6 py-3 text-lg font-semibold text-black bg-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 hover:bg-transparent hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300"
+                >
+                  About Me <FaArrowRight />
+                </button>
+                <a
+                  href="/Apurba Pal web dev.docx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
+                >
+                  View Resume
+                </a>
+              </div>
             </div>
             <div>
               <img
@@ -76,6 +96,7 @@ const App = () => {
         <div className="flex justify-center items-center mt-10">
           <a
             href="#experience"
+            onClick={handleScrollToExperience}
             className="flex flex-col items-center text-yellow-500 hover:text-orange-500 transition-all duration-300"
           >
             <span className="text-lg font-semibold">Experience</span>
@@ -86,7 +107,12 @@ const App = () => {
       <div className="relative">
         <Experience />
       </div>
-
+      <div className="relative">
+        <Projects/>
+      </div>
+      <div className="relative">
+        <Contact/>
+      </div>
 
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} buttonPosition={buttonPosition}>
@@ -97,8 +123,6 @@ const App = () => {
           new technologies and solving challenging problems.
         </p>
       </Modal>
-
-      {/* Experience Section */}
     </div>
   );
 };

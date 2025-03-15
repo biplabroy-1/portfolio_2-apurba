@@ -9,16 +9,32 @@ const Header = () => {
         <span className="text-yellow-500">Ap</span>urba
       </h3>
       <div className='flex justify-center align-middle gap-10 text-xl'>
-        <a href="https://www.linkedin.com/in/apurba-pal-642729265/" className="text-yellow-500 hover:text-orange-500">
+        <a
+          href="https://www.linkedin.com/in/apurba-pal-642729265/"
+          className="text-yellow-500 hover:text-orange-500"
+          target="_blank"
+        >
           <FaLinkedin />
         </a>
-        <a href="https://github.com/apurba-pal" className="text-yellow-500 hover:text-orange-500">
+        <a
+          href="https://github.com/apurba-pal"
+          className="text-yellow-500 hover:text-orange-500"
+          target="_blank"
+        >
           <FaGithub />
         </a>
-        <a href="https://www.instagram.com/apurba.pal/" className="text-yellow-500 hover:text-orange-500">
+        <a
+          href="https://www.instagram.com/apurba.pal/"
+          className="text-yellow-500 hover:text-orange-500"
+          target="_blank"
+        >
           <FaInstagram />
         </a>
-        <a href="mailto:palapurba2004@gmail.com" className="text-yellow-500 hover:text-orange-500">
+        <a
+          href="mailto:palapurba2004@gmail.com"
+          className="text-yellow-500 hover:text-orange-500"
+          target="_blank"
+        >
           <SiGmail />
         </a>
       </div>
