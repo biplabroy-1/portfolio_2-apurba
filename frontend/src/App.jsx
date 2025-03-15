@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import ParticlesBackground from "./components/ParticlesBackground";
 import Modal from "./components/Modal"; // Import the Modal component
 import { FaArrowRight } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa6";
+import Experience from "./components/pages/experience";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +22,7 @@ const App = () => {
   return (
     <div className="relative bg-transparent min-h-screen">
       <ParticlesBackground />
-      <div className="relative z-10">
+      <div className="relative z-10 min-h-screen">
         <Header />
         {/* my info */}
         <div className="text-white flex flex-col items-center mt-16">
@@ -48,7 +50,22 @@ const App = () => {
             </div>
           </div>
         </div>
+        {/* Experience Button */}
+        <div className="flex justify-center items-center mt-10">
+          <a
+            href="#experience"
+            className="flex flex-col items-center text-yellow-500 hover:text-orange-500 transition-all duration-300"
+          >
+            <span className="text-lg font-semibold">Experience</span>
+            <FaAngleDown className="w-6 h-6 mt-1 animate-bounce" />
+          </a>
+        </div>
       </div>
+      <div className="relative">
+        <Experience />
+      </div>
+
+
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} buttonPosition={buttonPosition}>
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
@@ -58,28 +75,8 @@ const App = () => {
           new technologies and solving challenging problems.
         </p>
       </Modal>
-      <div className="absolute bottom-10 w-full flex justify-center items-center">
-        <a
-          href="#experience"
-          className="flex flex-col items-center text-yellow-500 hover:text-orange-500 transition-all duration-300"
-        >
-          <span className="text-lg font-semibold">Experience</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6 mt-1 animate-bounce"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </a>
-      </div>
+
+      {/* Experience Section */}
     </div>
   );
 };
