@@ -55,16 +55,20 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-black text-yellow-500 p-10">
-      <div className="sticky top-0 bg-black z-10">
-        <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1>
+      <div>
+        <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1> {/* Normal static heading */}
       </div>
-      <div className="relative space-y-8 pt-20"> {/* Added pt-20 for padding below the heading */}
+      <div className="relative">
         {projects.map((project, index) => (
           <div
             key={index}
-            className={`min-h-screen ${
-              index === projects.length - 1 ? "relative" : "sticky"
-            } top-20 bg-black border-2 border-yellow-500 p-5 rounded-md shadow-lg`}
+            style={{
+              top: `calc(${index * 50}px + 1rem)`, // Offset by 4rem to account for the heading height
+              zIndex: index + 1, // Ensure higher zIndex for later cards
+            }}
+            className={`h-[70vh] ${
+              index === projects.length - 1 ? "sticky top-[50px]" : "sticky"
+            } bg-black border-2 border-yellow-500 p-5 rounded-md shadow-lg`}
           >
             <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
             <p className="text-gray-300 mb-4">{project.description}</p>
