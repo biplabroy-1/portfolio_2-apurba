@@ -8,7 +8,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 const ModelWithAnimation = () => {
   const group = useRef();
-  const { scene } = useGLTF("/model/6770ec28b536bee7e16f371a.glb");
+  const { scene } = useGLTF("/model/avatar_2.glb");
   const animation = useFBX("/animation/Talking On A Cell Phone.fbx");
   const mixer = useRef(null);
 
@@ -55,8 +55,8 @@ const Contact = () => {
   return (
     <motion.div className="flex ">
       <Canvas style={{ width: "30%", height: "100vh" }}>
-        <ambientLight intensity={1.5} />
-        <pointLight position={[1, -3, 0]} intensity={2.5} />
+        <ambientLight intensity={4} />
+        {/* <pointLight position={[0, 0, 3]} intensity={500} /> */}
         <ModelWithAnimation />
         <OrbitControls
           minDistance={7}
