@@ -9,6 +9,7 @@ import Experience from "./components/pages/experience";
 import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
 import SideNav from "./components/SideNav";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,9 +34,9 @@ const App = () => {
 
   return (
     <Router>
-      <div className="relative bg-transparent min-h-screen">
+      <div className="relative bg-transparent min-h-screen"> {/* Removed pb-16 */}
         <ParticlesBackground />
-        <div className="relative z-10" id="home">
+        <div className="relative z-0" id="home"> {/* Adjusted parent container */}
           <SideNav />
           <Header />
           <Routes>
@@ -110,6 +111,10 @@ const App = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
+          {/* Footer */}
+          <div className="relative z-0">
+            <Footer />
+          </div>
         </div>
         {/* Modal */}
         <Modal isOpen={isModalOpen} onClose={handleCloseModal} buttonPosition={buttonPosition}>

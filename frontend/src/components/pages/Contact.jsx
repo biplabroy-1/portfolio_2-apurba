@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "react-three-fiber";
 import { OrbitControls, useGLTF, useFBX } from "@react-three/drei";
 import * as THREE from "three";
-import { FiArrowRight } from "react-icons/fi";
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 
 const ModelWithAnimation = () => {
   const group = useRef();
@@ -53,8 +54,9 @@ const Contact = () => {
   };
 
   return (
-    <motion.div className="flex ">
-      {/* <Canvas style={{ width: "30%", height: "100vh" }}>
+    <motion.div className="flex min-h-screen">
+      {
+      /* <Canvas style={{ width: "30%", height: "100vh" }}>
         <ambientLight intensity={4} />
         <pointLight position={[0, 0, 3]} intensity={500} />
         <ModelWithAnimation />
@@ -65,9 +67,47 @@ const Contact = () => {
           maxPolarAngle={Math.PI / 3}
           enableRotate={false} // Disable rotation
         />
-      </Canvas> */}
+      </Canvas> */
+      }
+      {/* Social Links */}
+      <div className="flex flex-col items-center justify-center space-y-6 p-5 text-yellow-500">
+        <a
+          href="https://www.linkedin.com/in/apurba-pal-642729265/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-yellow-500 hover:text-orange-500 text-3xl"
+        >
+          <FaLinkedin />
+        </a>
+        <a
+          href="https://github.com/apurba-pal"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-yellow-500 hover:text-orange-500 text-3xl"
+        >
+          <FaGithub />
+        </a>
+        <a
+          href="https://www.instagram.com/apurba.pal/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-yellow-500 hover:text-orange-500 text-3xl"
+        >
+          <FaInstagram />
+        </a>
+        <a
+          href="mailto:palapurba2004@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-yellow-500 hover:text-orange-500 text-3xl"
+        >
+          <SiGmail />
+        </a>
+      </div>
+
+      {/* Contact Form */}
       <motion.div
-        className="text-yellow-500 min-h-screen flex flex-col items-center justify-center p-5"
+        className="text-yellow-500 flex-1 flex flex-col items-center justify-center p-5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
