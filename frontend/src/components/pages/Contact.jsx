@@ -54,7 +54,7 @@ const Contact = () => {
   };
 
   return (
-    <motion.div className="flex min-h-screen items-center justify-center p-10">
+    <motion.div className="flex  items-center justify-center p-10">
       {/* <Canvas style={{ width: "30%", height: "100vh" }}>
         <ambientLight intensity={4} />
         <pointLight position={[0, 0, 3]} intensity={500} />

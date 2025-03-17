@@ -9,7 +9,7 @@ const Footer = () => {
   return (
 
 
-    <footer className="bg-black text-yellow-500 py-4 w-full">
+    <footer className="bg-transparent text-yellow-500 py-4 w-full">
       <div className="container mx-auto flex justify-between items-center px-10">
         {/* Left Section: Name */}
         <div className="text-sm font-semibold">
@@ -24,7 +24,7 @@ const Footer = () => {
         {/* Right Section: Up Arrow */}
         <button
           onClick={scrollToTop}
-          className="text-yellow-500 hover:text-orange-500 text-xl"
+          className="text-yellow-500 hover:text-orange-500 text-xl bg-transparent border-none outline-none"
           title="Go to Top"
         >
           <FaArrowUp />

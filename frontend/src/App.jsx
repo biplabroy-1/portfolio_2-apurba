@@ -71,7 +71,7 @@ const App = () => {
                     </div>
                     <div>
                       <img
-                        src="/myImage2.jpg"
+                        src="/myImage_cropped.jpg"
                         alt="Apurba Pal"
                         className="w-80 h-80 rounded-full border-4 border-yellow-500 object-cover shadow-yellowGlow"
                       />
