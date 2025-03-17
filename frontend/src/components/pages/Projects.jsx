@@ -85,34 +85,38 @@ const ProjectCard = ({ project, index, total }) => {
       }}
       transition={{ duration: 0.5 }}
     >
-      <div className="w-full max-w-3xl h-full bg-black border-2 border-yellow-500 p-8 rounded-3xl shadow-lg"> {/* Added h-full for consistent height */}
-        <h2 className="text-2xl font-bold mb-4 text-yellow-500">{project.title}</h2>
-        <p className="text-gray-300 mb-4">{project.description}</p>
-        <div className="flex justify-between items-center">
-          <a
-            href={project.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
-          >
-            Source Code
-          </a>
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
-          >
-            Live Demo
-          </a>
+      <div className="w-full max-w-3xl h-full bg-black border-2 border-yellow-500 p-8 rounded-3xl shadow-lg flex flex-col justify-between"> {/* Added h-full for consistent height */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4 text-yellow-500">{project.title}</h2>
+          <p className="text-gray-300 mb-4">{project.description}</p>
+          <div className="flex justify-between items-center">
+            <a
+              href={project.source}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              Source Code
+            </a>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              Live Demo
+            </a>
+          </div>
         </div>
-        <div className="mt-4">
-          <h3 className="text-xl font-semibold text-yellow-500">Technologies Used:</h3>
-          <ul className="list-disc list-inside text-gray-300">
-            {project.technologies.map((tech, techIndex) => (
-              <li key={techIndex}>{tech}</li>
-            ))}
-          </ul>
+        <div className="mt-4 flex flex-wrap justify-start items-end gap-2"> {/* Aligned to bottom-left */}
+          {project.technologies.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="bg-yellow-500 text-black px-2 py-1 rounded-md text-sm font-semibold"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
     </motion.div>
