@@ -1,4 +1,6 @@
 import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Projects = () => {
   const projects = [
@@ -31,77 +33,88 @@ const Projects = () => {
       technologies: ["React", "OpenWeather API", "CSS"],
     },
     {
-      title: "Task Manager",
-      description: "A task management tool to organize and prioritize tasks effectively.",
-      source: "https://github.com/apurba-pal/task-manager",
-      link: "https://task-manager.com",
-      technologies: ["React", "Node.js", "Express", "MongoDB"],
-    },
-    {
-      title: "Blog Platform",
-      description: "A blogging platform where users can create, edit, and share blog posts.",
-      source: "https://github.com/apurba-pal/blog-platform",
-      link: "https://blog-platform.com",
-      technologies: ["Next.js", "Tailwind CSS", "Firebase"],
-    },
-    {
-      title: "Fitness Tracker",
-      description: "An app to track fitness activities and monitor progress over time.",
-      source: "https://github.com/apurba-pal/fitness-tracker",
-      link: "https://fitness-tracker.com",
-      technologies: ["React Native", "Redux", "SQLite"],
+      title: "Weather App 2",
+      description: "A weather forecasting app that provides real-time weather updates.",
+      source: "https://github.com/apurba-pal/weather-app",
+      link: "https://weather-app.com",
+      technologies: ["React", "OpenWeather API", "CSS"],
     },
   ];
 
   return (
     <div className="min-h-screen bg-black text-yellow-500 p-10">
-      <div>
-        <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1> {/* Normal static heading */}
-      </div>
-      <div className="relative">
+      <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1>
+      <div className="relative grid grid-cols-1 gap-10">
         {projects.map((project, index) => (
-          <div
-            key={index}
-            style={{
-              top: `calc(${index * 50}px + 1rem)`, // Offset by 1rem to account for spacing
-              zIndex: index + 1, // Ensure higher zIndex for later cards
-            }}
-            className={`h-[70vh] ${
-              index === projects.length - 1 ? "sticky top-[calc(50px + 1rem)]" : "sticky"
-            } bg-black border-2 border-yellow-500 p-5 rounded-md shadow-lg`}
-          >
-            <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
-            <p className="text-gray-300 mb-4">{project.description}</p>
-            <div className="flex justify-between items-center">
-              <a
-                href={project.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
-              >
-                Source Code
-              </a>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
-              >
-                Live Demo
-              </a>
-            </div>
-            <div className="mt-4">
-              <h3 className="text-xl font-semibold">Technologies Used:</h3>
-              <ul className="list-disc list-inside">
-                {project.technologies.map((tech, techIndex) => (
-                  <li key={techIndex}>{tech}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ProjectCard key={index} project={project} index={index} total={projects.length} />
         ))}
       </div>
     </div>
+  );
+};
+
+const ProjectCard = ({ project, index, total }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start({
+        scale: 1,
+        filter: "brightness(1)",
+      });
+    } else {
+      controls.start({
+        scale: 1 - (total - 1 - index) * 0.1,
+        filter: `brightness(${1 - (total - 1 - index) * 0.1})`,
+      });
+    }
+  }, [inView, controls, index, total]);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="relative h-[400px] sticky top-0 flex items-center justify-center" // Fixed height for uniformity
+      animate={controls}
+      initial={{
+        scale: 1 - (total - 1 - index) * 0.1,
+        filter: `brightness(${1 - (total - 1 - index) * 0.1})`,
+      }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="w-full max-w-3xl h-full bg-black border-2 border-yellow-500 p-8 rounded-3xl shadow-lg"> {/* Added h-full for consistent height */}
+        <h2 className="text-2xl font-bold mb-4 text-yellow-500">{project.title}</h2>
+        <p className="text-gray-300 mb-4">{project.description}</p>
+        <div className="flex justify-between items-center">
+          <a
+            href={project.source}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Source Code
+          </a>
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Live Demo
+          </a>
+        </div>
+        <div className="mt-4">
+          <h3 className="text-xl font-semibold text-yellow-500">Technologies Used:</h3>
+          <ul className="list-disc list-inside text-gray-300">
+            {project.technologies.map((tech, techIndex) => (
+              <li key={techIndex}>{tech}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
