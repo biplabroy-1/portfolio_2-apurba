@@ -63,11 +63,11 @@ const Projects = () => {
           <div
             key={index}
             style={{
-              top: `calc(${index * 50}px + 1rem)`, // Offset by 4rem to account for the heading height
+              top: `calc(${index * 50}px + 1rem)`, // Offset by 1rem to account for spacing
               zIndex: index + 1, // Ensure higher zIndex for later cards
             }}
             className={`h-[70vh] ${
-              index === projects.length - 1 ? "sticky top-[50px]" : "sticky"
+              index === projects.length - 1 ? "sticky top-[calc(50px + 1rem)]" : "sticky"
             } bg-black border-2 border-yellow-500 p-5 rounded-md shadow-lg`}
           >
             <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
