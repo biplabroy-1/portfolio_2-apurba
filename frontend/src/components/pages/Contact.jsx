@@ -55,9 +55,21 @@ const Contact = () => {
 
   return (
     <motion.div className="flex min-h-screen items-center justify-center p-10">
+      {/* <Canvas style={{ width: "30%", height: "100vh" }}>
+        <ambientLight intensity={4} />
+        <pointLight position={[0, 0, 3]} intensity={500} />
+        <ModelWithAnimation />
+        <OrbitControls
+          minDistance={7}
+          maxDistance={7}
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={Math.PI / 3}
+          enableRotate={false} // Disable rotation
+        />
+      </Canvas> */}
       <div className="bg-transparent backdrop-blur-md bg-opacity-30 p-5 rounded-md shadow-lg border border-yellow-500 flex w-full max-w-5xl">
         {/* Social Buttons */}
-        <div className="flex flex-col items-center justify-start space-y-4 w-1/3 pr-5 border-r border-r-yellow-500">
+        <div className="flex flex-col items-center justify-evenly space-y-4 w-1/3 pr-5 border-r border-r-yellow-500">
           <a
             href="https://www.linkedin.com/in/apurba-pal-642729265/"
             target="_blank"
@@ -100,24 +112,26 @@ const Contact = () => {
         <div className="w-2/3 pl-5">
           <h1 className="text-4xl font-bold mb-4 text-yellow-500">Let's Talk !!</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-            />
+            <div className="flex gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-1/2 p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-1/2 p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                required
+              />
+            </div>
             <textarea
               name="message"
               placeholder="Your Message"
