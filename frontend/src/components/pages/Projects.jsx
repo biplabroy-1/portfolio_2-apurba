@@ -76,7 +76,8 @@ const ProjectCard = ({ project, index, total }) => {
   return (
     <motion.div
       ref={ref}
-      className="relative h-[400px] sticky top-0 flex items-center justify-center" // Fixed height for uniformity
+      className="relative h-[400px] sticky top-[100px] flex items-center justify-center" // Added top offset
+      style={{ paddingTop: `${index * 20}px` }} // Dynamic padding for stacking effect
       animate={controls}
       initial={{
         scale: 1 - (total - 1 - index) * 0.1,

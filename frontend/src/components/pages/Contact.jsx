@@ -54,9 +54,9 @@ const Contact = () => {
 
   return (
     <motion.div className="flex ">
-      <Canvas style={{ width: "30%", height: "100vh" }}>
+      {/* <Canvas style={{ width: "30%", height: "100vh" }}>
         <ambientLight intensity={4} />
-        {/* <pointLight position={[0, 0, 3]} intensity={500} /> */}
+        <pointLight position={[0, 0, 3]} intensity={500} />
         <ModelWithAnimation />
         <OrbitControls
           minDistance={7}
@@ -65,7 +65,7 @@ const Contact = () => {
           maxPolarAngle={Math.PI / 3}
           enableRotate={false} // Disable rotation
         />
-      </Canvas>
+      </Canvas> */}
       <motion.div
         className="text-yellow-500 min-h-screen flex flex-col items-center justify-center p-5"
         initial={{ opacity: 0 }}
