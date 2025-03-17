@@ -54,107 +54,88 @@ const Contact = () => {
   };
 
   return (
-    <motion.div className="flex min-h-screen">
-      {
-      /* <Canvas style={{ width: "30%", height: "100vh" }}>
-        <ambientLight intensity={4} />
-        <pointLight position={[0, 0, 3]} intensity={500} />
-        <ModelWithAnimation />
-        <OrbitControls
-          minDistance={7}
-          maxDistance={7}
-          minPolarAngle={Math.PI / 3}
-          maxPolarAngle={Math.PI / 3}
-          enableRotate={false} // Disable rotation
-        />
-      </Canvas> */
-      }
-      {/* Social Links */}
-      <div className="flex flex-col items-center justify-center space-y-6 p-5 text-yellow-500">
-        <a
-          href="https://www.linkedin.com/in/apurba-pal-642729265/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-yellow-500 hover:text-orange-500 text-3xl"
-        >
-          <FaLinkedin />
-        </a>
-        <a
-          href="https://github.com/apurba-pal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-yellow-500 hover:text-orange-500 text-3xl"
-        >
-          <FaGithub />
-        </a>
-        <a
-          href="https://www.instagram.com/apurba.pal/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-yellow-500 hover:text-orange-500 text-3xl"
-        >
-          <FaInstagram />
-        </a>
-        <a
-          href="mailto:palapurba2004@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-yellow-500 hover:text-orange-500 text-3xl"
-        >
-          <SiGmail />
-        </a>
-      </div>
-
-      {/* Contact Form */}
-      <motion.div
-        className="text-yellow-500 flex-1 flex flex-col items-center justify-center p-5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="text-4xl font-bold mb-4 text-yellow-500">Let's Talk !!</h1>
-        <p className="text-lg leading-relaxed mb-6"></p>
-        <div className="flex gap-10">
-          <div className="bg-transparent backdrop-blur-md bg-opacity-30 p-5 rounded-md shadow-lg border border-yellow-500">
-            <h2 className="text-2xl font-bold mb-4 text-yellow-500">Send me a message</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                rows="4"
-                required
-              />
-              <button
-                type="submit"
-                className="w-full bg-yellow-500 text-black p-3 rounded-md hover:bg-yellow-600 transition-all duration-300"
-              >
-                {isSubmitted ? "Message Sent!" : "Send Message"}
-              </button>
-            </form>
-          </div>
+    <motion.div className="flex min-h-screen items-center justify-center p-10">
+      <div className="bg-transparent backdrop-blur-md bg-opacity-30 p-5 rounded-md shadow-lg border border-yellow-500 flex w-full max-w-5xl">
+        {/* Social Buttons */}
+        <div className="flex flex-col items-center justify-start space-y-4 w-1/3 pr-5 border-r border-r-yellow-500">
+          <a
+            href="https://www.linkedin.com/in/apurba-pal-642729265/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full h-12 bg-yellow-500 text-black rounded-md hover:bg-black hover:text-yellow-500 hover:border hover:border-yellow-500 transition-all duration-300"
+          >
+            <FaLinkedin className="text-xl" />
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/apurba-pal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full h-12 bg-yellow-500 text-black rounded-md hover:bg-black hover:text-yellow-500 hover:border hover:border-yellow-500 transition-all duration-300"
+          >
+            <FaGithub className="text-xl" />
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://www.instagram.com/apurba.pal/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full h-12 bg-yellow-500 text-black rounded-md hover:bg-black hover:text-yellow-500 hover:border hover:border-yellow-500 transition-all duration-300"
+          >
+            <FaInstagram className="text-xl" />
+            <span>Instagram</span>
+          </a>
+          <a
+            href="mailto:palapurba2004@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full h-12 bg-yellow-500 text-black rounded-md hover:bg-black hover:text-yellow-500 hover:border hover:border-yellow-500 transition-all duration-300"
+          >
+            <SiGmail className="text-xl" />
+            <span>Email</span>
+          </a>
         </div>
-      </motion.div>
+
+        {/* Contact Form */}
+        <div className="w-2/3 pl-5">
+          <h1 className="text-4xl font-bold mb-4 text-yellow-500">Let's Talk !!</h1>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              rows="4"
+              required
+            />
+            <button
+              type="submit"
+              className="w-full bg-yellow-500 text-black p-3 rounded-md hover:bg-yellow-600 transition-all duration-300"
+            >
+              {isSubmitted ? "Message Sent!" : "Send Message"}
+            </button>
+          </form>
+        </div>
+      </div>
     </motion.div>
   );
 };
