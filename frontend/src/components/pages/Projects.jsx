@@ -44,7 +44,7 @@ const Projects = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div className="p-6">
+    <div className="p-6 min-h-screen flex flex-col justify-evenly items-center">
       {/* Heading */}
       <h1 className="text-4xl font-bold text-yellow-500 mb-6 text-center">
         Projects
@@ -56,11 +56,7 @@ const Projects = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)', // Three columns
-          gridTemplateRows: 'auto auto', // Two rows
-          gridTemplateAreas: `
-            "project1 project2 project3"
-            "project4 . project5"
-          `, // Define grid areas
+          gridAutoRows: 'minmax(125px, auto)', // Ensure consistent row heights
         }}
       >
         {projects.map((project, index) => {
@@ -71,16 +67,20 @@ const Projects = () => {
               key={index}
               layout
               transition={{ layout: { duration: 0.5, type: 'spring' } }}
-              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between ${isOpen ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'
-                }`}
+              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex ${isOpen ? 'flex-col justify-between' : 'justify-center items-center'
+                } ${isOpen ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'}`}
               onClick={() => setOpenIndex(isOpen ? null : index)}
               style={{
-                gridArea: `project${index + 1}`, // Assign grid area dynamically
                 gridColumn: isOpen ? 'span 2' : 'auto', // Open card spans 2 columns
                 gridRow: isOpen ? 'span 2' : 'auto', // Open card spans 2 rows
+                minHeight: '125px', // Increased height for small cards
+                minWidth: '250px', // Increased width for small cards
               }}
             >
-              <motion.h2 layout="position" className="text-xl font-bold mb-4">
+              <motion.h2
+                layout="position"
+                className={`text-xl font-bold ${!isOpen ? 'text-center' : 'mb-4'}`} // Center heading for smaller cards
+              >
                 {project.title}
               </motion.h2>
               {isOpen && (
