@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Type } from 'lucide-react';
 
 const projects = [
   {
@@ -24,13 +25,6 @@ const projects = [
     technologies: ['React', 'Socket.IO', 'Express'],
   },
   {
-    title: 'Weather App',
-    description: 'A weather forecasting app using OpenWeather API.',
-    github: 'https://github.com/username/weather-app',
-    liveDemo: 'https://weather-app-demo.com',
-    technologies: ['React', 'API Integration', 'Bootstrap'],
-  },
-  {
     title: 'Task Manager',
     description: 'A task management app to organize your daily activities.',
     github: 'https://github.com/username/task-manager',
@@ -47,44 +41,78 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
   return (
-    <div className="p-6 bg-transparent">
-      <h1 className="text-3xl font-bold text-center mb-8 text-yellow-500">Projects</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
+    <div
+      className="grid gap-6 p-6"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)', // Three columns
+        gridTemplateRows: 'auto auto', // Two rows
+        gridTemplateAreas: `
+          "project1 project2 project3"
+          "project4 . project5"
+        `, // Define grid areas
+      }}
+    >
+      {projects.map((project, index) => {
+        const isOpen = openIndex === index;
+
+        return (
           <motion.div
             key={index}
-            className="bg-yellow-400 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            layout
+            transition={{ layout: { duration: 0.5, type: 'spring' } }}
+            className={`bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 ${
+              isOpen ? 'ring-2 ring-blue-500' : ''
+            }`}
+            onClick={() => setOpenIndex(isOpen ? null : index)}
+            style={{
+              gridArea: `project${index + 1}`, // Assign grid area dynamically
+              gridColumn: isOpen ? 'span 2' : 'auto', // Open card spans 2 columns
+              gridRow: isOpen ? 'span 2' : 'auto', // Open card spans 2 rows
+            }}
           >
-            <div>
-              <h2 className="text-xl font-bold text-black mb-2">{project.title}</h2>
-              <p className="text-black mb-4">{project.description}</p>
-            </div>
-            <div className="flex justify-between items-center mt-4">
-              <div className="bg-black text-yellow-400 text-sm px-2 py-1 rounded">
-                {project.technologies.join(', ')}
-              </div>
-              <div className="flex space-x-4">
-                <button
-                  onClick={() => window.open(project.github, '_blank')}
-                  className="bg-black text-yellow-400 font-semibold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition"
-                >
-                  GitHub
-                </button>
-                <button
-                  onClick={() => window.open(project.liveDemo, '_blank')}
-                  className="bg-black text-yellow-400 font-semibold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition"
-                >
-                  Live Demo
-                </button>
-              </div>
-            </div>
+            <motion.h2 layout="position" className="text-xl font-bold text-gray-800 mb-4">
+              {project.title}
+            </motion.h2>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+              >
+                <motion.p className="text-gray-600 mb-4">{project.description}</motion.p>
+                <motion.div className="flex justify-between items-center">
+                  <div className="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded">
+                    {project.technologies.join(', ')}
+                  </div>
+                  <div className="flex space-x-4">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 font-semibold hover:underline"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 font-semibold hover:underline"
+                    >
+                      Live Demo
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
           </motion.div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };
