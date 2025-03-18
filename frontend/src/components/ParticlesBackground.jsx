@@ -21,6 +21,7 @@ const ParticlesBackground = () => {
         <>{init && (
             <Particles
                 id="tsparticles"
+                className="w-full h-full" // Ensure full width and height
                 particlesLoaded={particlesLoaded}
                 options={{
                     background: {

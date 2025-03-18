@@ -1,139 +1,91 @@
-import React from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const projects = [
+  {
+    title: 'Portfolio Website',
+    description: 'A personal portfolio to showcase my projects and skills.',
+    github: 'https://github.com/username/portfolio',
+    liveDemo: 'https://portfolio-demo.com',
+    technologies: ['React', 'CSS', 'Framer Motion'],
+  },
+  {
+    title: 'E-commerce App',
+    description: 'A fully functional e-commerce application.',
+    github: 'https://github.com/username/ecommerce-app',
+    liveDemo: 'https://ecommerce-demo.com',
+    technologies: ['React', 'Node.js', 'MongoDB'],
+  },
+  {
+    title: 'Chat Application',
+    description: 'A real-time chat application with WebSocket support.',
+    github: 'https://github.com/username/chat-app',
+    liveDemo: 'https://chat-app-demo.com',
+    technologies: ['React', 'Socket.IO', 'Express'],
+  },
+  {
+    title: 'Weather App',
+    description: 'A weather forecasting app using OpenWeather API.',
+    github: 'https://github.com/username/weather-app',
+    liveDemo: 'https://weather-app-demo.com',
+    technologies: ['React', 'API Integration', 'Bootstrap'],
+  },
+  {
+    title: 'Task Manager',
+    description: 'A task management app to organize your daily activities.',
+    github: 'https://github.com/username/task-manager',
+    liveDemo: 'https://task-manager-demo.com',
+    technologies: ['React', 'Redux', 'Tailwind CSS'],
+  },
+  {
+    title: 'Blog Platform',
+    description: 'A blogging platform to create and share articles.',
+    github: 'https://github.com/username/blog-platform',
+    liveDemo: 'https://blog-platform-demo.com',
+    technologies: ['Next.js', 'GraphQL', 'TypeScript'],
+  },
+];
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Portfolio Website",
-      description: "This portfolio website itself is a project fo mine😅!!",
-      source: "https://github.com/apurba-pal/portfolio",
-      link: "https://apurba-portfolio.com",
-      technologies: ["React", "Tailwind CSS","Framer Motion", "Node JS"],
-    },
-    {
-      title: "3D Portfolio Website",
-      description: "A basic portfolio but in 3D",
-      source: "https://github.com/apurba-pal/portfolio",
-      link: "https://apurba-portfolio.com",
-      technologies: ["HTML", "THree JS"],
-    },
-    {
-      title: "Youtube Clone",
-      description: "A full-stack youtube-alike platform",
-      source: "https://github.com/apurba-pal/ecommerce-platform",
-      link: "https://ecommerce-platform.com",
-      technologies: ["React", "Node.js", "MongoDB", "Express"],
-    },
-    {
-      title: "Ecomerce Website",
-      description: "A full-stack youtube-alike platform with user authentication and payment integration.",
-      source: "https://github.com/apurba-pal/ecommerce-platform",
-      link: "https://ecommerce-platform.com",
-      technologies: ["React", "Node.js", "MongoDB", "Express"],
-    },
-    {
-      title: "Chat Application",
-      description: "A real-time chat application using WebSocket and Node.js.",
-      source: "https://github.com/apurba-pal/chat-app",
-      link: "https://chat-app.com",
-      technologies: ["Node.js", "WebSocket", "React"],
-    },
-    {
-      title: "Style in 3D",
-      description: "A 3D shirt customization website",
-      source: "https://github.com/apurba-pal/weather-app",
-      link: "https://weather-app.com",
-      technologies: ["React", "OpenWeather API", "CSS"],
-    },
-    {
-      title: "Pokemon World",
-      description: "A 3D world of pokemon",
-      source: "https://github.com/apurba-pal/weather-app",
-      link: "https://weather-app.com",
-      technologies: ["React", "OpenWeather API", "CSS"],
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-black text-yellow-500 p-10">
-      <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1>
-      <div className="relative grid grid-cols-1 gap-10">
+    <div className="p-6 bg-transparent">
+      <h1 className="text-3xl font-bold text-center mb-8 text-yellow-500">Projects</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} total={projects.length} />
+          <motion.div
+            key={index}
+            className="bg-yellow-400 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <div>
+              <h2 className="text-xl font-bold text-black mb-2">{project.title}</h2>
+              <p className="text-black mb-4">{project.description}</p>
+            </div>
+            <div className="flex justify-between items-center mt-4">
+              <div className="bg-black text-yellow-400 text-sm px-2 py-1 rounded">
+                {project.technologies.join(', ')}
+              </div>
+              <div className="flex space-x-4">
+                <button
+                  onClick={() => window.open(project.github, '_blank')}
+                  className="bg-black text-yellow-400 font-semibold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition"
+                >
+                  GitHub
+                </button>
+                <button
+                  onClick={() => window.open(project.liveDemo, '_blank')}
+                  className="bg-black text-yellow-400 font-semibold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition"
+                >
+                  Live Demo
+                </button>
+              </div>
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
-  );
-};
-
-const ProjectCard = ({ project, index, total }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-  });
-
-  React.useEffect(() => {
-    if (inView) {
-      controls.start({
-        scale: 1,
-        filter: "brightness(1)",
-      });
-    } else {
-      controls.start({
-        scale: 1 - (total - 1 - index) * 0.1,
-        filter: `brightness(${1 - (total - 1 - index) * 0.1})`,
-      });
-    }
-  }, [inView, controls, index, total]);
-
-  return (
-    <motion.div
-      ref={ref}
-      className="relative h-[400px] sticky top-[100px] flex items-center justify-center" // Added top offset
-      style={{ paddingTop: `${index * 20}px` }} // Dynamic padding for stacking effect
-      animate={controls}
-      initial={{
-        scale: 1 - (total - 1 - index) * 0.1,
-        filter: `brightness(${1 - (total - 1 - index) * 0.1})`,
-      }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="w-full max-w-3xl h-full bg-black border-2 border-yellow-500 p-8 rounded-3xl shadow-lg flex flex-col justify-between"> {/* Added h-full for consistent height */}
-        <div>
-          <h2 className="text-2xl font-bold mb-4 text-yellow-500">{project.title}</h2>
-          <p className="text-gray-300 mb-4">{project.description}</p>
-          <div className="flex justify-between items-center">
-            <a
-              href={project.source}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              Source Code
-            </a>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              Live Demo
-            </a>
-          </div>
-        </div>
-        <div className="mt-4 flex flex-wrap justify-start items-end gap-2"> {/* Aligned to bottom-left */}
-          {project.technologies.map((tech, techIndex) => (
-            <span
-              key={techIndex}
-              className="bg-yellow-500 text-black px-2 py-1 rounded-md text-sm font-semibold"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
   );
 };
 

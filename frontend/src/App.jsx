@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="relative bg-transparent min-h-screen"> {/* Removed pb-16 */}
+      <div className="relative bg-transparent min-h-screen overflow-x-hidden"> {/* Added overflow-x-hidden */}
         <ParticlesBackground />
         <div className="relative z-0" id="home"> {/* Adjusted parent container */}
           <SideNav />
@@ -43,7 +43,7 @@ const App = () => {
             <Route
               path="/"
               element={
-                <div className="text-white flex flex-col items-center mt-16">
+                <div className="text-white flex flex-col items-center mt-16 w-full">
                   <div className="flex flex-col md:flex-row items-center justify-center gap-40">
                     <div className="text-center md:text-left">
                       <h1 className="text-lg">👋 Hi, I am</h1>
