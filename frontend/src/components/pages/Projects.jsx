@@ -71,7 +71,7 @@ const Projects = () => {
               key={index}
               layout
               transition={{ layout: { duration: 0.5, type: 'spring' } }}
-              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 ${
+              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between ${
                 isOpen ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'
               }`}
               onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -99,7 +99,7 @@ const Projects = () => {
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="bg-yellow-500 text-black text-sm px-2 rounded-xl"
+                          className="bg-yellow-500 text-black text-sm px-2 py-1 rounded-md"
                         >
                           {tech}
                         </span>
