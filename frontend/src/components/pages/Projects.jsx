@@ -71,9 +71,8 @@ const Projects = () => {
               key={index}
               layout
               transition={{ layout: { duration: 0.5, type: 'spring' } }}
-              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between ${
-                isOpen ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'
-              }`}
+              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between ${isOpen ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'
+                }`}
               onClick={() => setOpenIndex(isOpen ? null : index)}
               style={{
                 gridArea: `project${index + 1}`, // Assign grid area dynamically
@@ -86,10 +85,6 @@ const Projects = () => {
               </motion.h2>
               {isOpen && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
                   className="flex flex-col justify-between h-full"
                 >
                   <motion.p className="mb-4">{project.description}</motion.p>
@@ -111,9 +106,8 @@ const Projects = () => {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${
-                          isOpen ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
-                        }`}
+                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isOpen ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
+                          }`}
                       >
                         <FaGithub size={20} /> {/* GitHub icon */}
                       </a>
@@ -121,9 +115,8 @@ const Projects = () => {
                         href={project.liveDemo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${
-                          isOpen ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
-                        }`}
+                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isOpen ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
+                          }`}
                       >
                         <FaExternalLinkAlt size={20} /> {/* Live Demo icon */}
                       </a>
