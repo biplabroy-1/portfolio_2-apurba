@@ -10,6 +10,7 @@ import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
 import SideNav from "./components/SideNav";
 import Footer from "./components/Footer";
+import Skills from "./components/pages/Skills";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,6 +97,9 @@ const App = () => {
                   <div id="experience" className="relative z-0">
                     <Experience />
                   </div>
+                  <div id="skills" className="relative z-0">
+                    <Skills />
+                  </div>
                   {/* Projects Section */}
                   <div id="projects" className="relative z-0">
                     <Projects />
@@ -110,6 +114,7 @@ const App = () => {
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/skills" element={<Skills />} /> {/* Add Skills route */}
           </Routes>
           {/* Footer */}
           <div className="relative z-0">

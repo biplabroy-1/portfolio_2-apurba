@@ -1,5 +1,5 @@
 import React from "react";
-import { FaHome, FaBriefcase, FaProjectDiagram, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaBriefcase, FaProjectDiagram, FaEnvelope, FaTools } from "react-icons/fa";
 
 const SideNav = () => {
   const handleScroll = (sectionId) => {
@@ -24,6 +24,13 @@ const SideNav = () => {
         title="Experience"
       >
         <FaBriefcase size={16} />
+      </button>
+      <button
+        onClick={() => handleScroll("skills")}
+        className="p-3 bg-transparent text-yellow-500 border-2 border-yellow-500 rounded-full shadow-lg transform scale-50 hover:scale-100 transition-transform duration-300 ease-in-out"
+        title="Skills"
+      >
+        <FaTools size={16} />
       </button>
       <button
         onClick={() => handleScroll("projects")}
