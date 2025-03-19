@@ -80,7 +80,11 @@ button:focus-visible {
   }
 }
 
-
+.no-scroll {
+  overflow: hidden;
+  overflow: hidden !important; /* Ensure scrolling is completely disabled */
+  height: 100%; /* Prevent scrolling by limiting height */
+}
 
 @layer base {
   :root {
@@ -137,8 +141,6 @@ button:focus-visible {
     --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {

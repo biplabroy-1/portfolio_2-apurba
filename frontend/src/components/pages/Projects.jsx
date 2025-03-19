@@ -41,7 +41,7 @@ const projects = [
 ];
 
 const Projects = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [hoverIndex, setHoverIndex] = useState(null); // Track hovered project
 
   return (
     <div className="p-6 min-h-screen flex flex-col justify-evenly items-center">
@@ -60,30 +60,31 @@ const Projects = () => {
         }}
       >
         {projects.map((project, index) => {
-          const isOpen = openIndex === index;
+          const isHovered = hoverIndex === index;
 
           return (
             <motion.div
               key={index}
               layout
               transition={{ layout: { duration: 0.5, type: 'spring' } }}
-              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex ${isOpen ? 'flex-col justify-between' : 'justify-center items-center'
-                } ${isOpen ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'}`}
-              onClick={() => setOpenIndex(isOpen ? null : index)}
+              className={`shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 flex ${isHovered ? 'flex-col justify-between' : 'justify-center items-center'
+                } ${isHovered ? 'border-4 border-yellow-500 bg-black text-yellow-500' : 'bg-yellow-500 text-black'}`}
+              onMouseEnter={() => setHoverIndex(index)} // Set hover index on mouse enter
+              onMouseLeave={() => setHoverIndex(null)} // Reset hover index on mouse leave
               style={{
-                gridColumn: isOpen ? 'span 2' : 'auto', // Open card spans 2 columns
-                gridRow: isOpen ? 'span 2' : 'auto', // Open card spans 2 rows
+                gridColumn: isHovered ? 'span 2' : 'auto', // Open card spans 2 columns
+                gridRow: isHovered ? 'span 2' : 'auto', // Open card spans 2 rows
                 minHeight: '125px', // Increased height for small cards
                 minWidth: '250px', // Increased width for small cards
               }}
             >
               <motion.h2
                 layout="position"
-                className={`text-xl font-bold ${!isOpen ? 'text-center' : 'mb-4'}`} // Center heading for smaller cards
+                className={`text-xl font-bold ${!isHovered ? 'text-center' : 'mb-4'}`} // Center heading for smaller cards
               >
                 {project.title}
               </motion.h2>
-              {isOpen && (
+              {isHovered && (
                 <motion.div
                   className="flex flex-col justify-between h-full"
                 >
@@ -106,7 +107,7 @@ const Projects = () => {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isOpen ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
+                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isHovered ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
                           }`}
                       >
                         <FaGithub size={20} /> {/* GitHub icon */}
@@ -115,7 +116,7 @@ const Projects = () => {
                         href={project.liveDemo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isOpen ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
+                        className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isHovered ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
                           }`}
                       >
                         <FaExternalLinkAlt size={20} /> {/* Live Demo icon */}

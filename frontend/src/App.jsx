@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import ParticlesBackground from "./components/ParticlesBackground";
@@ -24,6 +24,21 @@ const App = () => {
   };
 
   const handleCloseModal = () => setIsModalOpen(false);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add("no-scroll");
+      document.documentElement.classList.add("no-scroll"); // Apply to html as well
+    } else {
+      document.body.classList.remove("no-scroll");
+      document.documentElement.classList.remove("no-scroll"); // Remove from html as well
+    }
+    return () => {
+      document.body.classList.remove("no-scroll");
+      document.documentElement.classList.remove("no-scroll");
+    }; // Cleanup on unmount
+  }, [isModalOpen]);
 
   const handleScrollToExperience = (e) => {
     e.preventDefault();
@@ -66,7 +81,7 @@ const App = () => {
                           rel="noopener noreferrer"
                           className="px-6 py-3 text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
                         >
-                          View Resume
+                          Download Resume
                         </a>
                       </div>
                     </div>
@@ -123,12 +138,33 @@ const App = () => {
         </div>
         {/* Modal */}
         <Modal isOpen={isModalOpen} onClose={handleCloseModal} buttonPosition={buttonPosition}>
-          <h2 className="text-2xl font-bold mb-4">About Me</h2>
-          <p>
-            Hello! I am Apurba Pal, a passionate developer with a love for
-            creating beautiful and functional web applications. I enjoy learning
-            new technologies and solving challenging problems.
-          </p>
+          <div className="text-center">
+            {/* About Me Section */}
+            <h2 className="text-3xl font-bold text-yellow-500 mb-4">About Me</h2>
+            <p className="text-lg text-gray-300 mb-6">
+              Hello! I am Apurba Pal, a passionate developer with a love for creating beautiful and functional web applications. I enjoy learning new technologies and solving challenging problems.
+            </p>
+
+            {/* My Education Section */}
+            <h2 className="text-3xl font-bold text-yellow-500 mb-4">My Education</h2>
+            <ul className="text-lg text-gray-300 mb-6">
+              <li className="mb-2">
+                <span className="font-bold text-yellow-500">School:</span> XYZ High School
+              </li>
+              <li>
+                <span className="font-bold text-yellow-500">College:</span> ABC University
+              </li>
+            </ul>
+
+            {/* My Hobbies Section */}
+            <h2 className="text-3xl font-bold text-yellow-500 mb-4">My Hobbies</h2>
+            <ul className="text-lg text-gray-300">
+              <li className="mb-2">🎨 Painting</li>
+              <li className="mb-2">📚 Reading Books</li>
+              <li className="mb-2">🎮 Gaming</li>
+              <li>🌍 Exploring New Places</li>
+            </ul>
+          </div>
         </Modal>
       </div>
     </Router>
