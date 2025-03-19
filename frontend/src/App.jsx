@@ -137,7 +137,12 @@ const App = () => {
           </div>
         </div>
         {/* Modal */}
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal} buttonPosition={buttonPosition}>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          buttonPosition={buttonPosition}
+          className="min-h-screen" // Added min-h-screen class
+        >
           <div className="text-center">
             {/* About Me Section */}
             <h2 className="text-3xl font-bold text-yellow-500 mb-4">About Me</h2>
@@ -145,25 +150,7 @@ const App = () => {
               Hello! I am Apurba Pal, a passionate developer with a love for creating beautiful and functional web applications. I enjoy learning new technologies and solving challenging problems.
             </p>
 
-            {/* My Education Section */}
-            <h2 className="text-3xl font-bold text-yellow-500 mb-4">My Education</h2>
-            <ul className="text-lg text-gray-300 mb-6">
-              <li className="mb-2">
-                <span className="font-bold text-yellow-500">School:</span> XYZ High School
-              </li>
-              <li>
-                <span className="font-bold text-yellow-500">College:</span> ABC University
-              </li>
-            </ul>
 
-            {/* My Hobbies Section */}
-            <h2 className="text-3xl font-bold text-yellow-500 mb-4">My Hobbies</h2>
-            <ul className="text-lg text-gray-300">
-              <li className="mb-2">🎨 Painting</li>
-              <li className="mb-2">📚 Reading Books</li>
-              <li className="mb-2">🎮 Gaming</li>
-              <li>🌍 Exploring New Places</li>
-            </ul>
           </div>
         </Modal>
       </div>

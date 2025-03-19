@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "react-three-fiber";
 import { OrbitControls, useGLTF, useFBX } from "@react-three/drei";
 import * as THREE from "three";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import { fStore } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore"; // Import Firestore functions
 
 const ModelWithAnimation = () => {
   const group = useRef();
@@ -37,24 +39,28 @@ const ModelWithAnimation = () => {
 };
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    navigate("/thank-you");
-    // Handle form submission logic (e.g., send email, save data, etc.)
+    const contactsCollection = collection(fStore, "contacts"); // Get the "contacts" collection
+    addDoc(contactsCollection, { name, email, message }) // Add a new document
+      .then(() => {
+        setName('');
+        setEmail('');
+        setMessage('');
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 1000); // Reset submission state after 3 seconds
+      })
+      .catch((error) => console.log("Error submitting data:", error));
   };
 
   return (
-    <motion.div className="flex  items-center justify-center p-10">
+    <motion.div className="flex items-center justify-center p-10">
       {/* <Canvas style={{ width: "30%", height: "100vh" }}>
         <ambientLight intensity={4} />
         <pointLight position={[0, 0, 3]} intensity={500} />
@@ -117,8 +123,8 @@ const Contact = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-1/2 p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 required
               />
@@ -126,8 +132,8 @@ const Contact = () => {
                 type="email"
                 name="email"
                 placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-1/2 p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 required
               />
@@ -135,8 +141,8 @@ const Contact = () => {
             <textarea
               name="message"
               placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               className="w-full p-3 text-yellow-500 bg-yellow-100 bg-opacity-20 rounded-md border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               rows="4"
               required
