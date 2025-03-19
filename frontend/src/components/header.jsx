@@ -24,7 +24,7 @@ const Header = () => {
           <FaGithub />
         </a>
         <a
-          href="https://www.instagram.com/apurba.pal/"
+          href="https://www.instagram.com/apurba__pal/"
           className="text-yellow-500 hover:text-orange-500"
           target="_blank"
         >

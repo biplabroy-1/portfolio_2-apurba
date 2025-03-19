@@ -89,7 +89,7 @@ const Contact = () => {
             <span>GitHub</span>
           </a>
           <a
-            href="https://www.instagram.com/apurba.pal/"
+            href="https://www.instagram.com/apurba__pal/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full h-12 bg-yellow-500 text-black rounded-md hover:bg-black hover:text-yellow-500 hover:border hover:border-yellow-500 transition-all duration-300"

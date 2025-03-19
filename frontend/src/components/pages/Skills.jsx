@@ -1,15 +1,15 @@
 import React from 'react';
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGithub, FaPython, FaChartBar, FaNetworkWired } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGithub, FaPython, FaChartBar } from 'react-icons/fa';
 import { SiMongodb, SiExpress, SiTailwindcss, SiThreedotjs, SiOpencv, SiTensorflow, SiPandas, SiNumpy, SiScikitlearn, SiKeras } from 'react-icons/si';
 
 const Skills = () => {
   return (
     <div className="text-center min-h-screen flex flex-col items-center">
-      <h1 className="text-4xl font-bold text-yellow-500 mb-6">Skills</h1>
-      <div className="flex justify-center gap-16 w-full">
+      <h1 className="text-4xl font-bold text-yellow-500 m-10">Skills</h1>
+      <div className="flex justify-center w-full">
         {/* Web Development Section */}
-        <div className="flex flex-col items-center w-1/2">
-          <h2 className="text-3xl font-bold text-yellow-500 mb-4">Web Development</h2>
+        <div className="flex flex-col items-center w-1/2 border-r border-yellow-500 pr-20">
+          <h2 className="text-3xl font-bold text-yellow-500 mb-4">Web Dev</h2>
           <div className="flex flex-col gap-6">
             {/* Internal Div 1 */}
             <div className="flex justify-center gap-6">
@@ -24,6 +24,12 @@ const Skills = () => {
                   <FaCss3Alt />
                 </div>
                 <p className="text-sm text-gray-700">CSS</p>
+              </div>
+              <div className="flex flex-col items-center transform transition-transform duration-300 hover:scale-110 hover:rotate-6">
+                <div className="text-6xl text-yellow-500 mb-2">
+                  <SiTailwindcss />
+                </div>
+                <p className="text-sm text-gray-700">Tailwind CSS</p>
               </div>
               <div className="flex flex-col items-center transform transition-transform duration-300 hover:scale-110 hover:rotate-6">
                 <div className="text-6xl text-yellow-500 mb-2">
@@ -52,21 +58,15 @@ const Skills = () => {
                 </div>
                 <p className="text-sm text-gray-700">Express</p>
               </div>
-            </div>
-            {/* Internal Div 3 */}
-            <div className="flex justify-center gap-6">
               <div className="flex flex-col items-center transform transition-transform duration-300 hover:scale-110 hover:rotate-6">
                 <div className="text-6xl text-yellow-500 mb-2">
                   <SiMongodb />
                 </div>
                 <p className="text-sm text-gray-700">MongoDB</p>
               </div>
-              <div className="flex flex-col items-center transform transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                <div className="text-6xl text-yellow-500 mb-2">
-                  <SiTailwindcss />
-                </div>
-                <p className="text-sm text-gray-700">Tailwind CSS</p>
-              </div>
+            </div>
+            {/* Internal Div 3 */}
+            <div className="flex justify-center gap-6">
               <div className="flex flex-col items-center transform transition-transform duration-300 hover:scale-110 hover:rotate-6">
                 <div className="text-6xl text-yellow-500 mb-2">
                   <SiThreedotjs />
@@ -142,12 +142,6 @@ const Skills = () => {
                   <FaChartBar />
                 </div>
                 <p className="text-sm text-gray-700">Matplotlib</p>
-              </div>
-              <div className="flex flex-col items-center transform transition-transform duration-300 hover:scale-110 hover:rotate-6">
-                <div className="text-6xl text-yellow-500 mb-2">
-                  <FaNetworkWired />
-                </div>
-                <p className="text-sm text-gray-700">WebSocket</p>
               </div>
             </div>
           </div>
