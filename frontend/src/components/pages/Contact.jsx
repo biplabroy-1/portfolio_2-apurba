@@ -73,9 +73,9 @@ const Contact = () => {
           enableRotate={false} // Disable rotation
         />
       </Canvas> */}
-      <div className="bg-transparent backdrop-blur-md bg-opacity-30 p-5 rounded-md shadow-lg border border-yellow-500 flex w-full max-w-5xl">
+      <div className="bg-transparent backdrop-blur-md bg-opacity-30 p-5 rounded-md shadow-lg border border-yellow-500 flex flex-wrap w-full max-w-5xl">
         {/* Social Buttons */}
-        <div className="flex flex-col items-center justify-evenly space-y-4 w-1/3 pr-5 border-r border-r-yellow-500">
+        <div className="flex flex-col items-center justify-evenly space-y-4 w-full md:w-1/3 md:pr-5 md:border-r md:border-r-yellow-500">
           <a
             href="https://www.linkedin.com/in/apurba-pal-642729265/"
             target="_blank"
@@ -115,7 +115,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="w-2/3 pl-5">
+        <div className="w-full md:w-2/3 md:pl-5 mt-10 md:mt-0">
           <h1 className="text-4xl font-bold mb-4 text-yellow-500">Let's Talk !!</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex gap-4">

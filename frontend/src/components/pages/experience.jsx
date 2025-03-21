@@ -83,8 +83,16 @@ const Experience = () => {
           exit="exit"
         >
           <motion.div
-            className="md:col-span-8 p-4 border border-yellow-500 flex flex-col justify-center"
+            className="md:col-span-2 flex flex-col justify-center bg-yellow-500 text-black p-4"
             variants={leftSectionAnimation}
+          >
+            <h2 className="text-2xl font-semibold text-center">Intern</h2>
+            <p className="text-md text-center">Aug 2024 - Nov 2024</p>
+            <h3 className="text-lg text-center">Jindal Steel and Power Limited</h3>
+          </motion.div>
+          <motion.div
+            className="md:col-span-8 p-4 border border-yellow-500 flex flex-col justify-center"
+            variants={rightSectionAnimation}
           >
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start gap-2">
@@ -100,14 +108,6 @@ const Experience = () => {
                 Streamlined backend integration and data management processes through effective scripting.
               </li>
             </ul>
-          </motion.div>
-          <motion.div
-            className="md:col-span-2 flex flex-col justify-center bg-yellow-500 text-black p-4"
-            variants={rightSectionAnimation}
-          >
-            <h2 className="text-2xl font-semibold text-center">Intern</h2>
-            <p className="text-md text-center">Aug 2024 - Nov 2024</p>
-            <h3 className="text-lg text-center">Jindal Steel and Power Limited</h3>
           </motion.div>
         </motion.div>
 

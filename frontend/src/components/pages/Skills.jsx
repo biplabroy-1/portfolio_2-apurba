@@ -6,9 +6,9 @@ const Skills = () => {
   return (
     <div className="text-center min-h-screen flex flex-col items-center">
       <h1 className="text-4xl font-bold text-yellow-500 m-10">Skills</h1>
-      <div className="flex justify-center w-full">
+      <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center w-full">
         {/* Web Development Section */}
-        <div className="flex flex-col items-center w-1/2 border-r border-yellow-500 pr-20">
+        <div className="flex flex-col items-center w-full md:w-1/2 border-b md:border-b-0 md:border-r border-yellow-500 md:pr-20">
           <h2 className="text-3xl font-bold text-yellow-500 mb-4">Web Dev</h2>
           <div className="flex flex-col gap-6">
             {/* Internal Div 1 */}
@@ -84,7 +84,7 @@ const Skills = () => {
         </div>
 
         {/* Machine Learning Section */}
-        <div className="flex flex-col items-center w-1/2">
+        <div className="flex flex-col items-center w-full md:w-1/2 mt-10 md:mt-0">
           <h2 className="text-3xl font-bold text-yellow-500 mb-4">Machine Learning</h2>
           <div className="flex flex-col gap-6">
             {/* Internal Div 1 */}

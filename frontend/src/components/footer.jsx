@@ -10,14 +10,14 @@ const Footer = () => {
 
 
     <footer className="bg-transparent text-yellow-500 py-4 w-full">
-      <div className="container mx-auto flex justify-between items-center px-10">
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-10">
         {/* Left Section: Name */}
-        <div className="text-sm font-semibold">
+        <div className="text-sm font-semibold mb-2 sm:mb-0">
           Apurba Pal
         </div>
 
         {/* Center Section: Copyright */}
-        <div className="text-sm text-gray-400 text-center">
+        <div className="text-sm text-gray-400 text-center mb-2 sm:mb-0">
           Developed By Apurba Pal || © {new Date().getFullYear()}
         </div>
 

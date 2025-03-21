@@ -10,10 +10,10 @@ const SideNav = () => {
   };
 
   return (
-    <div className="fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col items-center space-y-4 z-50 overflow-hidden">
+    <div className="fixed top-1/2 right-2 transform -translate-y-1/2 flex flex-col items-center space-y-4 z-50 overflow-hidden sm:right-1">
       <button
         onClick={() => handleScroll("home")}
-        className="p-3 bg-transparent text-yellow-500 border-2 border-yellow-500 rounded-full shadow-lg transform scale-50 hover:scale-100 transition-transform duration-300 ease-in-out"
+        className="p-3 bg-transparent text-yellow-500 border-2 border-yellow-500 rounded-full shadow-lg transform scale-75 hover:scale-100 transition-transform duration-300 ease-in-out sm:scale-50"
         title="Home"
       >
         <FaHome size={16} />

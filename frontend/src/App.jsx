@@ -11,6 +11,7 @@ import Contact from "./components/pages/Contact";
 import SideNav from "./components/SideNav";
 import Footer from "./components/Footer";
 import Skills from "./components/pages/Skills";
+import MobileNav from "./components/mobileNav";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,27 +52,31 @@ const App = () => {
   return (
     <Router>
       <div className="relative bg-transparent min-h-screen overflow-x-hidden"> {/* Added overflow-x-hidden */}
+        <MobileNav /> {/* Added MobileNav component */}
         <ParticlesBackground />
         <div className="relative z-0" id="home"> {/* Adjusted parent container */}
-          <SideNav />
+          {/* Render SideNav only for larger screens */}
+          <div className="hidden md:block">
+            <SideNav />
+          </div>
           <Header />
           <Routes>
             <Route
               path="/"
               element={
                 <div className="text-white flex flex-col items-center mt-16 w-full">
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-40">
-                    <div className="text-center md:text-left">
-                      <h1 className="text-lg">👋 Hi, I am</h1>
-                      <h1 className="text-8xl font-bold">
+                  <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-40">
+                    <div className="order-2 md:order-1 text-center md:text-left">
+                      <h1 className="text-lg sm:text-xl">👋 Hi, I am</h1>
+                      <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold">
                         <span className="text-white">Apurba</span>{" "}
                         <span className="text-yellow-500">Pal</span>
                       </h1>
-                      <div className="flex gap-4 mt-6">
+                      <div className="flex flex-col md:flex-row gap-4 mt-6"> {/* Adjusted for vertical alignment in mobile */}
                         <button
                           ref={buttonRef}
                           onClick={handleOpenModal}
-                          className="px-6 py-3 text-lg font-semibold text-black bg-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 hover:bg-transparent hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300"
+                          className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-lg font-semibold text-black bg-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 hover:bg-transparent hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300"
                         >
                           About Me <FaArrowRight />
                         </button>
@@ -79,17 +84,17 @@ const App = () => {
                           href="/Apurba Pal web dev.docx"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-6 py-3 text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
+                          className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
                         >
                           Download Resume
                         </a>
                       </div>
                     </div>
-                    <div>
+                    <div className="order-1 md:order-2 mb-6 md:mb-0"> {/* Image moved above buttons in mobile */}
                       <img
                         src="/myImage_cropped.jpg"
                         alt="Apurba Pal"
-                        className="w-80 h-80 rounded-full border-4 border-yellow-500 object-cover shadow-yellowGlow"
+                        className="w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full border-4 border-yellow-500 object-cover shadow-yellowGlow"
                       />
                     </div>
                   </div>

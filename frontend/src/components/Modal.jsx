@@ -20,7 +20,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         isOpen ? "animate-modalIn" : "animate-modalOut"
       }`}
     >
-      <div className="bg-black rounded-lg p-6 w-96 text-white relative shadow-yellowGlow">
+      <div className="bg-black rounded-lg p-6 w-full max-w-md text-white relative shadow-yellowGlow sm:p-4 sm:w-11/12">
         <button
           onClick={onClose}
           className="bg-black absolute top-2 right-2 text-yellow-500 hover:text-yellow-400 border-none outline-none"
