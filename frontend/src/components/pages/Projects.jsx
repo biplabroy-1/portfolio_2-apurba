@@ -31,13 +31,13 @@ const projects = [
     liveDemo: 'https://www.linkedin.com/posts/apurba-pal-642729265_webdevelopment-threejs-javascript-activity-7281265706342477824--Nu8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEERxlIBVWCpBvDpP3TJIIZX_ZnFfmvz3B8',
     technologies: ['HTML','Three JS'],
   },
-  // {
-  //   title: 'Blog Platform',
-  //   description: 'A blogging platform to create and share articles.',
-  //   github: 'https://github.com/username/blog-platform',
-  //   liveDemo: 'https://blog-platform-demo.com',
-  //   technologies: ['Next.js', 'GraphQL', 'TypeScript'],
-  // },
+  {
+    title: '3D shirt customizer',
+    description: 'A fully interactive 3D Shirt Customizer built with React.js, Three.js, and React Three Fiber. Users can personalize shirts by selecting colors, uploading logos/images, and applying designs seamlessly. The backend is ready for AI-generated designs, pending a DALL·E subscription. Excited to push the boundaries of interactive customization! 🚀✨',
+    github: 'https://github.com/Apurba-pal/shirt_website.git',
+    liveDemo: 'https://www.linkedin.com/posts/apurba-pal-642729265_reactjs-threejs-webdevelopment-activity-7247881470487191553-u7C6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEERxlIBVWCpBvDpP3TJIIZX_ZnFfmvz3B8',
+    technologies: ['React', 'Three JS', 'React Three Fiber'],
+  },
 ];
 
 const Projects = () => {

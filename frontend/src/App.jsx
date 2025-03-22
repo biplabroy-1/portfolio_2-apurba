@@ -64,54 +64,59 @@ const App = () => {
             <Route
               path="/"
               element={
-                <div className="text-white flex flex-col items-center mt-16 w-full">
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-40">
-                    <div className="order-2 md:order-1 text-center md:text-left">
-                      <h1 className="text-lg sm:text-xl">👋 Hi, I am</h1>
-                      <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold">
-                        <span className="text-white">Apurba</span>{" "}
-                        <span className="text-yellow-500">Pal</span>
-                      </h1>
-                      <div className="flex flex-col md:flex-row gap-4 mt-6"> {/* Adjusted for vertical alignment in mobile */}
-                        <button
-                          ref={buttonRef}
-                          onClick={handleOpenModal}
-                          className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-lg font-semibold text-black bg-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 hover:bg-transparent hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300"
-                        >
-                          About Me <FaArrowRight />
-                        </button>
-                        <a
-                          href="/Apurba Pal web dev.docx"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
-                        >
-                          Download Resume
-                        </a>
+                <div className="text-white flex flex-col items-center mt-16 w-full ">
+
+
+                  <div className="min-h-screen flex flex-col pt-10 gap-10">
+
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-40">
+                      <div className="order-2 md:order-1 text-center md:text-left">
+                        <h1 className="text-lg sm:text-xl">👋 Hi, I am</h1>
+                        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold">
+                          <span className="text-white">Apurba</span>{" "}
+                          <span className="text-yellow-500">Pal</span>
+                        </h1>
+                        <div className="flex flex-col md:flex-row gap-4 mt-6"> {/* Adjusted for vertical alignment in mobile */}
+                          <button
+                            ref={buttonRef}
+                            onClick={handleOpenModal}
+                            className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-lg font-semibold text-black bg-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 hover:bg-transparent hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300"
+                          >
+                            About Me <FaArrowRight />
+                          </button>
+                          <a
+                            href="/Apurba Pal web dev.docx"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-lg font-semibold text-yellow-500 border border-yellow-500 rounded-md flex items-center gap-2 bg-transparent hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
+                          >
+                            Download Resume
+                          </a>
+                        </div>
+                      </div>
+                      <div className="order-1 md:order-2 mb-6 md:mb-0"> {/* Image moved above buttons in mobile */}
+                        <img
+                          src="/myImage_cropped.jpg"
+                          alt="Apurba Pal"
+                          className="w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full border-4 border-yellow-500 object-cover shadow-yellowGlow"
+                        />
                       </div>
                     </div>
-                    <div className="order-1 md:order-2 mb-6 md:mb-0"> {/* Image moved above buttons in mobile */}
-                      <img
-                        src="/myImage_cropped.jpg"
-                        alt="Apurba Pal"
-                        className="w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full border-4 border-yellow-500 object-cover shadow-yellowGlow"
-                      />
+                    {/* Down Arrow Button */}
+                    <div className="mt-10 flex justify-center z-10">
+                      <button
+                        onClick={() => {
+                          const experienceSection = document.getElementById("experience");
+                          if (experienceSection) {
+                            experienceSection.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }}
+                        className="flex flex-col items-center text-yellow-500 hover:text-orange-500 transition-all duration-300 bg-transparent border-none outline-none"
+                      >
+                        <span className="text-lg font-semibold">Experience</span>
+                        <FaAngleDown className="w-6 h-6 mt-1 animate-bounce" />
+                      </button>
                     </div>
-                  </div>
-                  {/* Down Arrow Button */}
-                  <div className="mt-10 flex justify-center z-10">
-                    <button
-                      onClick={() => {
-                        const experienceSection = document.getElementById("experience");
-                        if (experienceSection) {
-                          experienceSection.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }}
-                      className="flex flex-col items-center text-yellow-500 hover:text-orange-500 transition-all duration-300 bg-transparent border-none outline-none"
-                    >
-                      <span className="text-lg font-semibold">Experience</span>
-                      <FaAngleDown className="w-6 h-6 mt-1 animate-bounce" />
-                    </button>
                   </div>
                   {/* Experience Section */}
                   <div id="experience" className="relative z-0">
