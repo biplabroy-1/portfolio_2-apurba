@@ -1,17 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import ParticlesBackground from "./components/ParticlesBackground";
-import Modal from "./components/Modal";
+import Header from "./components/header.jsx";
+import ParticlesBackground from "./components/ParticlesBackground.jsx";
+import Modal from "./components/Modal.jsx";
 import { FaArrowRight } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
-import Experience from "./components/pages/experience";
-import Projects from "./components/pages/Projects";
-import Contact from "./components/pages/Contact";
-import SideNav from "./components/SideNav";
-import Footer from "./components/Footer";
-import Skills from "./components/pages/Skills";
-import MobileNav from "./components/mobileNav";
+import Experience from "./components/pages/experience.jsx";
+import Projects from "./components/pages/Projects.jsx";
+import Contact from "./components/pages/Contact.jsx";
+import SideNav from "./components/SideNav.jsx";
+import Footer from "./components/Footer.jsx";
+import Skills from "./components/pages/Skills.jsx";
+import MobileNav from "./components/mobileNav.jsx";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +20,10 @@ const App = () => {
 
   const handleOpenModal = () => {
     const rect = buttonRef.current.getBoundingClientRect();
-    setButtonPosition({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    setButtonPosition({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
     setIsModalOpen(true);
   };
 
@@ -51,10 +54,14 @@ const App = () => {
 
   return (
     <Router>
-      <div className="relative bg-transparent min-h-screen overflow-x-hidden"> {/* Added overflow-x-hidden */}
+      <div className="relative bg-transparent min-h-screen overflow-x-hidden">
+        {" "}
+        {/* Added overflow-x-hidden */}
         <MobileNav /> {/* Added MobileNav component */}
         <ParticlesBackground />
-        <div className="relative z-0" id="home"> {/* Adjusted parent container */}
+        <div className="relative z-0" id="home">
+          {" "}
+          {/* Adjusted parent container */}
           {/* Render SideNav only for larger screens */}
           <div className="hidden md:block">
             <SideNav />
@@ -65,10 +72,7 @@ const App = () => {
               path="/"
               element={
                 <div className="text-white flex flex-col items-center mt-16 w-full ">
-
-
                   <div className="min-h-screen flex flex-col pt-10 gap-10">
-
                     <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-40">
                       <div className="order-2 md:order-1 text-center md:text-left">
                         <h1 className="text-lg sm:text-xl">👋 Hi, I am</h1>
@@ -76,7 +80,9 @@ const App = () => {
                           <span className="text-white">Apurba</span>{" "}
                           <span className="text-yellow-500">Pal</span>
                         </h1>
-                        <div className="flex flex-col md:flex-row gap-4 mt-6"> {/* Adjusted for vertical alignment in mobile */}
+                        <div className="flex flex-col md:flex-row gap-4 mt-6">
+                          {" "}
+                          {/* Adjusted for vertical alignment in mobile */}
                           <button
                             ref={buttonRef}
                             onClick={handleOpenModal}
@@ -94,7 +100,9 @@ const App = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="order-1 md:order-2 mb-6 md:mb-0"> {/* Image moved above buttons in mobile */}
+                      <div className="order-1 md:order-2 mb-6 md:mb-0">
+                        {" "}
+                        {/* Image moved above buttons in mobile */}
                         <img
                           src="/myImage_cropped.jpg"
                           alt="Apurba Pal"
@@ -106,14 +114,19 @@ const App = () => {
                     <div className="mt-10 flex justify-center z-10">
                       <button
                         onClick={() => {
-                          const experienceSection = document.getElementById("experience");
+                          const experienceSection =
+                            document.getElementById("experience");
                           if (experienceSection) {
-                            experienceSection.scrollIntoView({ behavior: "smooth" });
+                            experienceSection.scrollIntoView({
+                              behavior: "smooth",
+                            });
                           }
                         }}
                         className="flex flex-col items-center text-yellow-500 hover:text-orange-500 transition-all duration-300 bg-transparent border-none outline-none"
                       >
-                        <span className="text-lg font-semibold">Experience</span>
+                        <span className="text-lg font-semibold">
+                          Experience
+                        </span>
                         <FaAngleDown className="w-6 h-6 mt-1 animate-bounce" />
                       </button>
                     </div>
@@ -139,7 +152,8 @@ const App = () => {
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/skills" element={<Skills />} /> {/* Add Skills route */}
+            <Route path="/skills" element={<Skills />} />{" "}
+            {/* Add Skills route */}
           </Routes>
           {/* Footer */}
           <div className="relative z-0">
@@ -155,12 +169,14 @@ const App = () => {
         >
           <div className="text-center">
             {/* About Me Section */}
-            <h2 className="text-3xl font-bold text-yellow-500 mb-4">About Me</h2>
+            <h2 className="text-3xl font-bold text-yellow-500 mb-4">
+              About Me
+            </h2>
             <p className="text-lg text-gray-300 mb-6">
-              Hello! I am Apurba Pal, a passionate developer with a love for creating beautiful and functional web applications. I enjoy learning new technologies and solving challenging problems.
+              Hello! I am Apurba Pal, a passionate developer with a love for
+              creating beautiful and functional web applications. I enjoy
+              learning new technologies and solving challenging problems.
             </p>
-
-
           </div>
         </Modal>
       </div>
