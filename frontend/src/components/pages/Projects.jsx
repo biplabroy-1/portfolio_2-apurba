@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaVideo } from 'react-icons/fa'; // Updated to use FaVideo for demo video icon
 
 const projects = [
-  {
+  { 
     title: 'this Portfolio Website',
     description: 'this portfolio website itself can be considered as a project of mine, it is fully responsive',
     github: 'https://github.com/username/portfolio',
