@@ -52,9 +52,9 @@ const Projects = () => {
 
       {/* Projects Grid */}
       <div
-        className="grid gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3"
+        className="grid grid-cols-1 sm:grid-cols-4 gap-6 w-full max-w-5xl"
         style={{
-          gridAutoRows: 'minmax(125px, auto)', // Ensure consistent row heights
+          gridAutoRows: 'minmax(200px, auto)', // Ensure consistent row heights
         }}
       >
         {projects.map((project, index) => {
