@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'; // Import icons
+import { FaGithub, FaVideo } from 'react-icons/fa'; // Updated to use FaVideo for demo video icon
 
 const projects = [
   {
-    title: 'Portfolio Website',
-    description: 'A personal portfolio to showcase my projects and skills.',
+    title: 'this Portfolio Website',
+    description: 'this portfolio website itself can be considered as a project of mine, it is fully responsive',
     github: 'https://github.com/username/portfolio',
-    liveDemo: 'https://portfolio-demo.com',
-    technologies: ['React', 'CSS', 'Framer Motion'],
+    liveDemo: '#',
+    technologies: ['React', 'tailwind', 'Framer Motion', 'Firebase'],
   },
   {
-    title: 'E-commerce App',
-    description: 'A fully functional e-commerce application.',
-    github: 'https://github.com/username/ecommerce-app',
-    liveDemo: 'https://ecommerce-demo.com',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+    title: '3D Pokemon Website',
+    description: "A browser-based 3D Pokémon world built with Three.js! Explore with WASD controls, interact with 3D Pokémon models, and view their stats. Features include collision detection, terrain movement, and a third-person character controller. More updates coming soon! 🚀",
+    github: 'https://github.com/Apurba-pal/3d_pokemon_website.git',
+    liveDemo: 'https://www.linkedin.com/posts/apurba-pal-642729265_threejs-web3d-gamedevelopment-activity-7304490671468421121-5fv0?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEERxlIBVWCpBvDpP3TJIIZX_ZnFfmvz3B8',
+    technologies: ['HTML', 'Three JS'],
   },
   {
     title: 'Chat Application',
-    description: 'A real-time chat application with WebSocket support.',
-    github: 'https://github.com/username/chat-app',
-    liveDemo: 'https://chat-app-demo.com',
-    technologies: ['React', 'Socket.IO', 'Express'],
+    description: "A real-time chat application with signup/login, JWT authentication, instant text and image sharing, active chat tracking, and dynamic user status updates. Users can update profile pictures and customize themes. Currently focused on building the backend! 🚀(sorry there isn't any demo video for this 😅)",
+    github: 'https://github.com/Apurba-pal/MERN_chat_app.git',
+    liveDemo: '',
+    technologies: ['React', 'Tailwind','Node', 'Socket.IO', 'Express', 'MongoDB'],
   },
   {
-    title: 'Task Manager',
-    description: 'A task management app to organize your daily activities.',
-    github: 'https://github.com/username/task-manager',
-    liveDemo: 'https://task-manager-demo.com',
-    technologies: ['React', 'Redux', 'Tailwind CSS'],
+    title: '3D portfolio',
+    description: 'A sleek portfolio with a custom THREE.js-powered parallax effect synced to scroll. Featuring just three sections, the focus is on smooth, interactive visuals for a dynamic user experience. Excited to refine it further—feedback is welcome! 🎨✨',
+    github: 'https://github.com/Apurba-pal/3D_portfolio.git',
+    liveDemo: 'https://www.linkedin.com/posts/apurba-pal-642729265_webdevelopment-threejs-javascript-activity-7281265706342477824--Nu8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEERxlIBVWCpBvDpP3TJIIZX_ZnFfmvz3B8',
+    technologies: ['HTML','Three JS'],
   },
-  {
-    title: 'Blog Platform',
-    description: 'A blogging platform to create and share articles.',
-    github: 'https://github.com/username/blog-platform',
-    liveDemo: 'https://blog-platform-demo.com',
-    technologies: ['Next.js', 'GraphQL', 'TypeScript'],
-  },
+  // {
+  //   title: 'Blog Platform',
+  //   description: 'A blogging platform to create and share articles.',
+  //   github: 'https://github.com/username/blog-platform',
+  //   liveDemo: 'https://blog-platform-demo.com',
+  //   technologies: ['Next.js', 'GraphQL', 'TypeScript'],
+  // },
 ];
 
 const Projects = () => {
@@ -52,10 +52,8 @@ const Projects = () => {
 
       {/* Projects Grid */}
       <div
-        className="grid gap-6"
+        className="grid gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3"
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)', // Three columns
           gridAutoRows: 'minmax(125px, auto)', // Ensure consistent row heights
         }}
       >
@@ -113,13 +111,13 @@ const Projects = () => {
                         <FaGithub size={20} /> {/* GitHub icon */}
                       </a>
                       <a
-                        href={project.liveDemo}
+                        href={project.liveDemo} // Updated to point to demo video
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`font-semibold px-4 py-2 rounded hover:bg-gray-800 transition ${isHovered ? 'bg-yellow-500 text-black' : 'bg-black text-yellow-500'
                           }`}
                       >
-                        <FaExternalLinkAlt size={20} /> {/* Live Demo icon */}
+                        <FaVideo size={20} /> {/* Demo Video icon */}
                       </a>
                     </div>
                   </div>
